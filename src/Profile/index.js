@@ -1,30 +1,41 @@
 import * as React from 'react';
-import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
+import { makeStyles } from "@material-ui/core/styles";
+// import { findByLabelText } from '@testing-library/dom';
 
 
-// const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+const useStyles = makeStyles((theme) => ({
+  profileWrapper: {
+    display: "flex",
+    flexDirection: "column",
+  },
+}));
 
 const Profile = () => {
-  const [checked, setChecked] = React.useState(true);
+  const [value, setValue] = React.useState('female');
+
+  const classes = useStyles();
 
   const handleChange = (event) => {
-    setChecked(event.target.checked);
+    setValue(event.target.value);
   };
 
-  return  <div>
-    <div>Name: Nikita</div>
+  return  <div className={classes.profileWrapper}>
+    <div>Profile Name: User Name</div>
 
     <FormControl component="fieldset">
       <FormLabel component="legend">Gender</FormLabel>
       <RadioGroup
+        row
         aria-label="gender"
         defaultValue="Other"
-        name="radio-buttons-group"
+        name="radio-buttons-GenderGroup"
+        // value={value}
+        onChange={handleChange}
       >
         <FormControlLabel value="Woman" control={<Radio />} label="Woman" />
         <FormControlLabel value="Man" control={<Radio />} label="Man" />
@@ -34,9 +45,12 @@ const Profile = () => {
     <FormControl component="fieldset">
       <FormLabel component="legend">Are you over 18?</FormLabel>
       <RadioGroup
+        row
         aria-label="Age"
         defaultValue="No"
-        name="radio-buttons-group"
+        name="radio-buttons-AgeGroup"
+        // value={value}
+        onChange={handleChange}
       >
         <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
         <FormControlLabel value="No" control={<Radio />} label="No" />
