@@ -5,7 +5,6 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
 import { makeStyles } from "@material-ui/core/styles";
-// import { findByLabelText } from '@testing-library/dom';
 import { handleSetChange } from "./profileSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -18,17 +17,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Profile = () => {
-  // const [genderValue, setGenderValue] = React.useState('Other');
-  // const [adultValue, setAdultValue] = React.useState('No');
-  const { genderValue } = useSelector((state) => state.profile);
-  const { adultValue } = useSelector((state) => state.profile);
+  const { genderValue, adultValue } = useSelector((state) => state.profile);
 
   const dispatch = useDispatch();
 
   const classes = useStyles();
 
   const handleChange = (event) => {
-    dispatch(handleSetChange(event));
+    dispatch(handleSetChange(event.target));
   };
 
   return  <div className={classes.profileWrapper}>
@@ -39,7 +35,6 @@ const Profile = () => {
       <RadioGroup
         row
         aria-label="gender"
-        // defaultValue="Other"
         name="gender"
         value={genderValue}
         onChange={handleChange}
@@ -54,7 +49,6 @@ const Profile = () => {
       <RadioGroup
         row
         aria-label="Age"
-        // defaultValue="No"
         name="age"
         value={adultValue}
         onChange={handleChange}
