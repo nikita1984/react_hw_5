@@ -8,7 +8,6 @@ export const profileSlice = createSlice({
   },
   reducers: {
     handleSetChange: (state, action) => {
-      state.messagesArray.push(action.payload);
       switch (action.payload.target.name) {
         case "gender":
           state.genderValue = action.payload.target.value;
