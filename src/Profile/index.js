@@ -16,12 +16,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Profile = () => {
-  const [value, setValue] = React.useState('female');
+  const [genderValue, setGenderValue] = React.useState('Other');
+  const [adultValue, setAdultValue] = React.useState('No');
 
   const classes = useStyles();
 
   const handleChange = (event) => {
-    setValue(event.target.value);
+    // const gender = genderValue.slice();
+    // const adult = adultValue.slice();
+    
+    switch (event.target.name) {
+       case "gender":
+         setGenderValue(() => event.target.value);
+         break;
+       case "age":
+         setAdultValue(() => event.target.value);
+         break;
+     }
+    console.log(genderValue);
+    console.log(adultValue);
   };
 
   return  <div className={classes.profileWrapper}>
@@ -32,14 +45,14 @@ const Profile = () => {
       <RadioGroup
         row
         aria-label="gender"
-        defaultValue="Other"
-        name="radio-buttons-GenderGroup"
-        // value={value}
+        // defaultValue="Other"
+        name="gender"
+        value={genderValue}
         onChange={handleChange}
       >
-        <FormControlLabel value="Woman" control={<Radio />} label="Woman" />
-        <FormControlLabel value="Man" control={<Radio />} label="Man" />
-        <FormControlLabel value="Other" control={<Radio />} label="Other" />
+        <FormControlLabel name="gender" value="Woman" control={<Radio />} label="Woman" />
+        <FormControlLabel name="gender" value="Man" control={<Radio />} label="Man" />
+        <FormControlLabel name="gender" value="Other" control={<Radio />} label="Other" />
       </RadioGroup>
     </FormControl>
     <FormControl component="fieldset">
@@ -47,13 +60,13 @@ const Profile = () => {
       <RadioGroup
         row
         aria-label="Age"
-        defaultValue="No"
-        name="radio-buttons-AgeGroup"
-        // value={value}
+        // defaultValue="No"
+        name="age"
+        value={adultValue}
         onChange={handleChange}
       >
-        <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-        <FormControlLabel value="No" control={<Radio />} label="No" />
+        <FormControlLabel name="age" value="Yes" control={<Radio />} label="Yes" />
+        <FormControlLabel name="age" value="No" control={<Radio />} label="No" />
       </RadioGroup>
     </FormControl> 
 </div>;
