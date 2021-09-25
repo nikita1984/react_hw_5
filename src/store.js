@@ -7,4 +7,5 @@ export default configureStore({
     chat: chatReducer,
     profile: profileReducer,
   },
+  devTools: process.env.NODE_ENV !== 'production',
 });
