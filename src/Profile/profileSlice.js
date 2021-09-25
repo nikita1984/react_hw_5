@@ -8,12 +8,12 @@ export const profileSlice = createSlice({
   },
   reducers: {
     handleSetChange: (state, action) => {
-      switch (action.payload.name) {
+      switch (action.payload.currentTarget.name) {
         case "gender":
-          state.genderValue = action.payload.value;
+          state.genderValue = action.payload.target.value;
           break;
         case "age":
-          state.adultValue = action.payload.value;
+          state.adultValue = action.payload.target.value;
           break;
       }
     },

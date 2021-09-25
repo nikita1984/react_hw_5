@@ -24,7 +24,9 @@ const Profile = () => {
   const classes = useStyles();
 
   const handleChange = (event) => {
-    dispatch(handleSetChange(event.target));
+    console.log(event.currentTarget.name);
+    console.log(event.target.value);
+    dispatch(handleSetChange(event));
   };
 
   return  <div className={classes.profileWrapper}>
@@ -39,9 +41,9 @@ const Profile = () => {
         value={genderValue}
         onChange={handleChange}
       >
-        <FormControlLabel name="gender" value="Woman" control={<Radio />} label="Woman" />
-        <FormControlLabel name="gender" value="Man" control={<Radio />} label="Man" />
-        <FormControlLabel name="gender" value="Other" control={<Radio />} label="Other" />
+        <FormControlLabel value="Woman" control={<Radio />} label="Woman" />
+        <FormControlLabel value="Man" control={<Radio />} label="Man" />
+        <FormControlLabel value="Other" control={<Radio />} label="Other" />
       </RadioGroup>
     </FormControl>
     <FormControl component="fieldset">
@@ -53,8 +55,8 @@ const Profile = () => {
         value={adultValue}
         onChange={handleChange}
       >
-        <FormControlLabel name="age" value="Yes" control={<Radio />} label="Yes" />
-        <FormControlLabel name="age" value="No" control={<Radio />} label="No" />
+        <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+        <FormControlLabel value="No" control={<Radio />} label="No" />
       </RadioGroup>
     </FormControl> 
 </div>;
